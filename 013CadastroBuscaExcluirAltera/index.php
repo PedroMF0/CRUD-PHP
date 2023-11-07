@@ -34,9 +34,6 @@ Released   : 20120915
 				<ul>
 					<li class="current_page_item"><a href="index.php">Homepage</a></li>
 					<li><a href="visao/guicadusuario.php">cadastro</a></li>
-
-					<li><a href="controle/usuariocontrole.php?op=consultar">Consulta</a></li>
-					<li><a href="visao/guidelusuario.php">Excluir</a></li>
 					
 				</ul>
 			</div>
@@ -63,7 +60,8 @@ Released   : 20120915
 
 		echo '<p>Olá, '.$usu->login.'<br>'. 
 			 'Seja Bem-Vindo!</p>';
-	}//fecha o if
+	}
+	//fecha o if
 ?>
 
 
@@ -92,9 +90,10 @@ Released   : 20120915
 								<h2>Links Privado</h2>
 								<ul>
 									<li><a href="controle/usuariocontrole.php?op=consultar">Consultar</a></li>
-									<li><a href="visao/guidelusuario.html">Excluir</a></li>
+									<li><a href="visao/guidelusuario.php">Excluir</a></li>
 									<li><a href="visao/guibuscausuario.php">Busca Avançada</a></li>
 									<li><a href="controle/usuariocontrole.php?op=deslogar">Deslogar</a></li>
+									<li><a href="visao/guialterar.php">Alterar</a></li>
 								</ul>
 							</li>
 						</ul>

@@ -52,20 +52,20 @@ Released   : 20120915
 
 <h2 class="title">Alterar</h2>
 <?php
-    if(isset($_SESSION['usuario']) ){
+    if(isset($_SESSION['usuarios']) ){
         include_once '../modelo/usuario.class.php';
         $usu = array();
-        $usu = unserialize($_SESSION['usuario']);
+        $usu = unserialize($_SESSION['usuarios']);
      }
 ?>
 <form action="../controle/usuariocontrole.php?op=confirmalterar" method="post" name="cadu">
     <fieldset>
         <legend>Cadastro</legend>
-        <label>Código: <input type="text" name="txtidusuario" id="txtidsuario" value="<?php echo $usu[0]->idUsuario; ?>">*</label>
+        <label>Código: <input type="text" name="txtidusuario" id="txtidsuario" value="<?php  ?>">*</label>
 		<br>
-        <label>Login: <input type="text" name="txtlogin" id="txtlogin" value="<?php echo $usu[0]->login; ?>">*</label>
+        <label>Login: <input type="text" name="txtlogin" id="txtlogin" value="<?php  ?>">*</label>
 		<br>
-        <label>Senha: <input type="text" name="txtsenha" id="txtsenha" value="<?php echo $usu[0]->senha; ?>">*</label>
+        <label>Senha: <input type="text" name="txtsenha" id="txtsenha" value="<?php  ?>">*</label>
 		<br>
 		<label>Tipo: 
 			<select name="seltipo" id="seltipo">
@@ -78,7 +78,7 @@ Released   : 20120915
 						echo '<option value = "visitante" selected = "selected">visitante</option> ';
 					}//fecha o else
 
-					unset($_SESSION['usuario']);
+					unset($_SESSION['usuarios']);
 				?>
 			</select>
 		</label><br>
@@ -99,7 +99,7 @@ Released   : 20120915
 		<?php
 				if(!isset($_SESSION['privateUser']) ){
 			?>
-				<form name="login" id="login" method="post" action="controle/usuariocontrole.php?op=logar">
+				<form name="login" id="login" method="post" action="../controle/usuariocontrole.php?op=logar">
 						<input type="text" name="txtlogin" id="txtlogin" placeholder="login">
 						<br>
 						<input type="password" name="txtsenha" id="txtsenha" placeholder="senha">
@@ -115,9 +115,10 @@ Released   : 20120915
 								<h2>Links Privado</h2>
 								<ul>
 									<li><a href="../controle/usuariocontrole.php?op=consultar">Consultar</a></li>
-									<li><a href="guidelusuario.php">Excluir</a></li>
+									<li><a href="../controle/usuariocontrole.php?op=deletar">Excluir</a></li>
 									<li><a href="guibuscausuario.php">Busca Avançada</a></li>
 									<li><a href="../controle/usuariocontrole.php?op=deslogar">Deslogar</a></li>
+									<li><a href="guialterar.php">Alterar</a></li>
 								</ul>
 							</li>
 						</ul>

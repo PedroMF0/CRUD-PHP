@@ -51,20 +51,20 @@ Released   : 20120915
 
 <h2 class="title">Resposta</h2>
 <p>
-    <?php
-        if( isset($_SESSION['usuario']) ){
+   
+<?php
+    if (isset($_SESSION['msg'])) {
+         echo $_SESSION['msg'];
 
-                //instanciando um objeto $u o Usuario
-                include '../modelo/usuario.class.php';
-                $usu = new Usuario();
-                $usu = unserialize($_SESSION['usuario']);
-
-                echo 'O usuário '.$usu->login. ' foi cadastrado com sucesso!'; 
-                     
-      
-            }else{
-				echo 'Variável de sessão não encontrada!';
-			} //fecha o if do isset
+    } else if (isset($_SESSION['usuario'])) {
+        // Successfully registered a user
+        include '../modelo/usuario.class.php';
+        $usu = new Usuario();
+        $usu = unserialize($_SESSION['usuario']);
+        echo 'O usuário ' . $usu->login . ' foi cadastrado com sucesso!';
+    } else {
+        echo 'Variável de sessão não encontrada!';
+    }
     ?>
 </p>
 
@@ -77,7 +77,7 @@ Released   : 20120915
 		<?php
 				if(!isset($_SESSION['privateUser']) ){
 			?>
-				<form name="login" id="login" method="post" action="controle/usuariocontrole.php?op=logar">
+				<form name="login" id="login" method="post" action="../controle/usuariocontrole.php?op=logar">
 						<input type="text" name="txtlogin" id="txtlogin" placeholder="login">
 						<br>
 						<input type="password" name="txtsenha" id="txtsenha" placeholder="senha">
@@ -93,7 +93,7 @@ Released   : 20120915
 								<h2>Links Privado</h2>
 								<ul>
 									<li><a href="../controle/usuariocontrole.php?op=consultar">Consultar</a></li>
-									<li><a href="guidelusuario.html">Excluir</a></li>
+									<li><a href="../controle/usuariocontrole.php?op=deletar">Excluir</a></li>
 									<li><a href="guibuscausuario.php">Busca Avançada</a></li>
 									<li><a href="../controle/usuariocontrole.php?op=deslogar">Deslogar</a></li>
 								</ul>

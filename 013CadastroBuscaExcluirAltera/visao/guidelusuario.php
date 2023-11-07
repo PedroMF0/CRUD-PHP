@@ -75,7 +75,7 @@ Released   : 20120915
 		<?php
 				if(!isset($_SESSION['privateUser']) ){
 			?>
-				<form name="login" id="login" method="post" action="controle/usuariocontrole.php?op=logar">
+				<form name="login" id="login" method="post" action="../controle/usuariocontrole.php?op=logar">
 						<input type="text" name="txtlogin" id="txtlogin" placeholder="login">
 						<br>
 						<input type="password" name="txtsenha" id="txtsenha" placeholder="senha">
@@ -91,9 +91,10 @@ Released   : 20120915
 								<h2>Links Privado</h2>
 								<ul>
 									<li><a href="../controle/usuariocontrole.php?op=consultar">Consultar</a></li>
-									<li><a href="guidelusuario.html">Excluir</a></li>
+									<li><a href="../controle/usuariocontrole.php?op=deletar">Excluir</a></li>
 									<li><a href="guibuscausuario.php">Busca Avançada</a></li>
 									<li><a href="../controle/usuariocontrole.php?op=deslogar">Deslogar</a></li>
+									<li><a href="guialterar.php">Alterar</a></li>
 								</ul>
 							</li>
 						</ul>

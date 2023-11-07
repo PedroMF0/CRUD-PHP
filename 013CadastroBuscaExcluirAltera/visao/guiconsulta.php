@@ -18,7 +18,7 @@ Released   : 20120915
 <meta name="keywords" content="" />
 <meta name="description" content="" />
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Aula013 Cadastro Busca Exclui e Altera no banco </title>
+<title>Aula013 Cadastro, Busca, Excluir e Alterar</title>
 <link href='http://fonts.googleapis.com/css?family=Oswald:400,300' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 <link href="../estilos/style.css" rel="stylesheet" type="text/css" media="screen" />
@@ -32,10 +32,8 @@ Released   : 20120915
 			</div>
 			<div id="menu">
 				<ul>
-					<li class="current_page_item"><a href="../index.php">Homepage</a></li>
-					<li><a href="guicadusuario.php">cadastro</a></li>
-
-					
+				<li class="current_page_item"><a href="../index.php">Homepage</a></li>
+					<li><a href="guicadusuario.html">cadastro</a></li>
 					
 				</ul>
 			</div>
@@ -52,58 +50,57 @@ Released   : 20120915
 		  <div class="post">
 				<!-- InstanceBeginEditable name="conteúdo" -->
 
-<h2 class="title">Consulta</h2>
+				<h2 class="title">Consulta</h2>
 <p>
     <?php
-        if( isset($_SESSION['usuario']) ){
+    if (isset($_SESSION['usuario'])) {
+        // Instantiate an object $usu as a Usuario
+        include_once '../modelo/usuario.class.php';
+        $usu = array();
+        $usu = unserialize($_SESSION['usuario']);
+        ?>
+        <table summary="Tabela de usuários" border="1">
+            <caption>Usuários</caption>
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Login</th>
+                    <th>Senha</th>
+                    <th>Tipo</th>
+                </tr>
+            </thead>
 
-                //instanciando um objeto $u o Usuario
-                include_once '../modelo/usuario.class.php';
-                $usu = array();
-                $usu = unserialize($_SESSION['usuario']);
-	?>
+            <tfoot>
+                <tr>
+                    <th>Código</th>
+                    <th>Login</th>
+                    <th>Senha</th>
+                    <th>Tipo</th>
+                </tr>
+            </tfoot>
 
-				<table summary="Tabela de usuários" border="5">
-					<caption>Usuários</caption>
-					<thead>
-						<tr>
-							<th>Código</th>
-							<th>Login</th>
-							<th>Senha</th>
-							<th>Tipo</th>
-						</tr>
-					</thead>
+            <tbody>
+                <?php
+                foreach ($usu as $u) {
+                    echo '<tr>';
 
-					<tfoot>
-						<tr>
-							<th>Código</th>
-							<th>Login</th>
-							<th>Senha</th>
-							<th>Tipo</th>
-						</tr>
-					</tfoot>
+                    echo "<td>
+                    <a href='../controle/usuariocontrole.php?op=deletar&idUsuario'> $u->idUsuario </a> </td>";
 
-					<tbody>
-						<?php
-						//Imprimindo o toString da classe Usuario
-							foreach($usu as $u){
-								echo '<tr>';
-									echo "<td>
-									<a href='../controle/usuariocontrole.php?op=deletar&idUsuario'> 	$u->idUsuario</a> </td>";
+                    echo '<td>' . $u->login . '</td>';
+                    echo '<td>***********</td>'; // You may want to display password securely
+                    echo '<td>' . $u->tipo . '</td>';
 
-									echo '<td>'.$u->login.'</td>';
-									echo '<td>*************</td>';
-									echo '<td>'.$u->tipo.'</td>';
-								echo '</tr>';
-							}//fecha o foreach
-						?>
-					</tbody>
-				</table>
-			<?php
-				}else{
-					echo 'Variável usuario não existe!';
-				} //fecha o else do isset usuario
-  		   ?>
+                    echo '</tr>';
+                } // closes the foreach
+                ?>
+            </tbody>
+        </table>
+        <?php
+    } else {
+        echo 'Variavel usuarios não existe!';
+    }
+    ?>
 </p>
 
 
@@ -113,34 +110,34 @@ Released   : 20120915
 		</div>
 		<!-- end #content -->
 		<div id="sidebar">
-			<	<?php
-				if(!isset($_SESSION['privateUser']) ){
+		<?php
+				if(!isset($_SESSION['privateUser'])){
 			?>
-				<form name="login" id="login" method="post" action="controle/usuariocontrole.php?op=logar">
-						<input type="text" name="txtlogin" id="txtlogin" placeholder="login">
-						<br>
-						<input type="password" name="txtsenha" id="txtsenha" placeholder="senha">
-						<br>
+			<form name="login" id="login" method="post" action="../controle/usuariocontrole.php?op=logar">
+					<input type="text" name="txtlogin" id="txtlogin" placeholder="login"><br>
+					<input type="password" name="txtsenha" id="txtsenha" placeholder="senha"><br>
 
-						<input type="submit" name="btnlogar" id="btnlogar" value="Logar">
-				</form>
+					<input type="submit" name="btnlogar" id="btnlogar" value="Logar">
+			</form>
 			<?php
 				}else{
 			?>
 						<ul>
 							<li>
-								<h2>Links Privado</h2>
+								<h2>Links Privados</h2>
 								<ul>
 									<li><a href="../controle/usuariocontrole.php?op=consultar">Consultar</a></li>
-									<li><a href="guidelusuario.html">Excluir</a></li>
+									<li><a href="guidelusuario.php">Excluir</a></li>
 									<li><a href="guibuscausuario.php">Busca Avançada</a></li>
 									<li><a href="../controle/usuariocontrole.php?op=deslogar">Deslogar</a></li>
+									<li><a href="guialterar.php">Alterar</a></li>
 								</ul>
 							</li>
 						</ul>
-			<?php
-				}//fim do else
-			?>
+					<?php
+				}
+
+				    ?>
 		</div>
 		<!-- end #sidebar -->
 		<div style="clear: both;">&nbsp;</div>

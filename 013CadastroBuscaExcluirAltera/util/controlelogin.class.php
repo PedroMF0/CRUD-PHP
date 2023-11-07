@@ -11,6 +11,7 @@ class ControleLogin{
             $_SESSION['privateUser']=serialize($usuario);
 
             header("location:../index.php");
+            
         }else{
             $_SESSION['msg']='Login ou Senha inválidos!';
             header("location:../visao/guiresposta.php");
