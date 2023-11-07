@@ -18,48 +18,44 @@
             if( isset($_POST['txtlogin']) &&
                 isset($_POST['txtsenha']) &&
                 isset($_POST['seltipo']) ) {
-
-                    //Recebendo os dados
-                    $login = $_POST['txtlogin'];
-                    $senha = $_POST['txtsenha'];
-                    $tipo = $_POST['seltipo'];
-
+    
                     //fazendo a validação
                     $erros = array();
-
-                    if(!Validacao::testarLogin($login) ){
+    
+                    if(!Validacao::testarLogin($_POST['txtlogin']) ){
                         $erros[] = 'Login inválido!';
                     }
-
-                    if(!Validacao::testarSenha($senha) ){
+    
+                    if(!Validacao::testarSenha($_POST['txtsenha']) ){
                         $erros[] = 'Senha inválida!';
                     }
-
-                    if(!Validacao::testarTipo($tipo) ){
+    
+                    if(!Validacao::testarTipo($_POST['seltipo']) ){
                         $erros[] = 'Tipo inválido!';
                     }
-
+    
                     if( count($erros) == 0){
                         $u = new Usuario();
                         $u->login = $_POST['txtlogin'];
                         $u->senha = $_POST['txtsenha'];
                         $u->tipo = $_POST['seltipo'];
-
+    
                         /*Enviar o objeto $u para o banco de dados */
                         $uDAO = new UsuarioDAO();
                         $uDAO->cadastrarUsuario($u);
-
-                        $_SESSION['u']=serialize($u);
-
+    
+                        $_SESSION['usuario']=serialize($u);
+                        $_SESSION['msg'] = 'Usuário cadastrado com sucesso!';
+    
                         header("location:../visao/guiresposta.php");
                     }else{
-                        $_SESSION['erros'] = serialize($erros);
-                        header("location:../visao/guierro.php");
+                        $e = serialize($erros);
+                        header("location:../visao/guierro.php?erros=$e");
                     }//fecha o if do count
-            }else{
-            echo 'DEU RUIM!';
-            }//fecha o isset
-
+              }else{
+               echo 'Variaveis inválidas!';
+              }//fecha o isset
+    
         break; 
 
         case 'consultar':
@@ -192,18 +188,17 @@
 
                     $erros = array();
 
-                    if(!Validacao::testarLogin($login) ){
+                    if(!Validacao::testarLogin($_POST['txtlogin']) ){
                         $erros[] = 'Login inválido!';
                     }
-
-                    if(!Validacao::testarSenha($senha) ){
+    
+                    if(!Validacao::testarSenha($_POST['txtsenha']) ){
                         $erros[] = 'Senha inválida!';
                     }
-
-                    if(!Validacao::testarTipo($tipo) ){
+    
+                    if(!Validacao::testarTipo($_POST['seltipo']) ){
                         $erros[] = 'Tipo inválido!';
                     }
-
                     if(count($erros) == 0){
                         $u = new Usuario();
                         $u->idusuario = $idUsuario;

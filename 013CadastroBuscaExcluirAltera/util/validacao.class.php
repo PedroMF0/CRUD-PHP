@@ -2,7 +2,7 @@
 class Validacao{
 
     public static function testarLogin($valor){
-        $exp='/^[a-z@_]{3,20}$/';
+        $exp='/[a-z@_]{3,20}$/';
         if(preg_match($exp,$valor) ){
             return true;
         }else{
