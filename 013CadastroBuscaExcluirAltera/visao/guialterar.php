@@ -63,9 +63,9 @@ Released   : 20120915
         <legend>Cadastro</legend>
         <label>Código: <input type="text" name="txtidusuario" id="txtidsuario" value="<?php  ?>">*</label>
 		<br>
-        <label>Login: <input type="text" name="txtlogin" id="txtlogin" value="<?php  ?>">*</label>
+        <label>Login: <input type="text" name="txtlogin" id="txtlogin" value="<?php  ?>"></label>
 		<br>
-        <label>Senha: <input type="text" name="txtsenha" id="txtsenha" value="<?php  ?>">*</label>
+        <label>Senha: <input type="text" name="txtsenha" id="txtsenha" value="<?php  ?>"></label>
 		<br>
 		<label>Tipo: 
 			<select name="seltipo" id="seltipo">

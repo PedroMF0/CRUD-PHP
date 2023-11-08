@@ -33,7 +33,7 @@ Released   : 20120915
 			<div id="menu">
 				<ul>
 				<li class="current_page_item"><a href="../index.php">Homepage</a></li>
-					<li><a href="guicadusuario.html">cadastro</a></li>
+					<li><a href="guicadusuario.php">cadastro</a></li>
 					
 				</ul>
 			</div>
@@ -59,7 +59,7 @@ Released   : 20120915
         $usu = array();
         $usu = unserialize($_SESSION['usuario']);
         ?>
-        <table summary="Tabela de usuários" border="1">
+        <table summary="Tabela de usuários" border="5">
             <caption>Usuários</caption>
             <thead>
                 <tr>

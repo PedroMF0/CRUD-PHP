@@ -45,7 +45,7 @@
                         $uDAO->cadastrarUsuario($u);
     
                         $_SESSION['usuario']=serialize($u);
-                        $_SESSION['msg'] = 'Usuário cadastrado com sucesso!';
+                        $_SESSION['msg'] = 'O usuário '.$u->login.' foi cadastrado com sucesso!';
     
                         header("location:../visao/guiresposta.php");
                     }else{
@@ -53,7 +53,7 @@
                         header("location:../visao/guierro.php?erros=$e");
                     }//fecha o if do count
               }else{
-               echo 'Variaveis inválidas!';
+                 echo 'Variaveis inválidas!';
               }//fecha o isset
     
         break; 
@@ -222,8 +222,8 @@
 
         default: echo 'Erro no switch';
         break;//fecha case cadastrar
-    }//fecha o switch
-}else{
-    echo 'Variavel não existe';
-}
-    ?>
+        }//fecha o switch
+        }else{
+            echo 'Variavel não existe';
+        }
+ ?>

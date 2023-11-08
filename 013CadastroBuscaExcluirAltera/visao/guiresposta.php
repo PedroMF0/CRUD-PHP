@@ -61,7 +61,7 @@ Released   : 20120915
         include '../modelo/usuario.class.php';
         $usu = new Usuario();
         $usu = unserialize($_SESSION['usuario']);
-        echo 'O usuário ' . $usu->login . ' foi cadastrado com sucesso!';
+        echo 'O usuário '.$usu->login.' foi cadastrado com sucesso!';
     } else {
         echo 'Variável de sessão não encontrada!';
     }
@@ -96,6 +96,7 @@ Released   : 20120915
 									<li><a href="../controle/usuariocontrole.php?op=deletar">Excluir</a></li>
 									<li><a href="guibuscausuario.php">Busca Avançada</a></li>
 									<li><a href="../controle/usuariocontrole.php?op=deslogar">Deslogar</a></li>
+									<li><a href="guialterar.php">Alterar</a></li>
 								</ul>
 							</li>
 						</ul>
